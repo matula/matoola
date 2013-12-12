@@ -6,11 +6,14 @@
  * @author  Terry Matula <terrymatula@gmail.com>
  *
  */
+// Autoload
+require 'vendor/autoload.php';
 
 // Get controller
-$controller = new ReflectionClass('Controller');
+$controller = new ReflectionClass('Matoola\Controllers\Controller');
 
-try {
+try
+{
 	// Default to index
 	$method = $controller->getMethod(($_GET['m']) ?: 'index');
 }
@@ -31,19 +34,3 @@ if (!$method OR !$method->isPublic())
 // Call the method
 $invoke = $controller->newInstance();
 $method->invoke($invoke);
-
-/**
- * Controller
- */
-class Controller
-{
-	public function index()
-	{
-		echo 'Welcome to MatOOla!';
-	}
-
-	public function testing()
-	{
-		echo 'Testing out';
-	}
-}
