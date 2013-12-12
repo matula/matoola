@@ -18,7 +18,7 @@ if (!$method OR !$method->isPublic())
 $invoke = $controller->newInstance();
 $method->invoke($invoke);
 
-class C
+class Controller
 {
 	public function index()
 	{
